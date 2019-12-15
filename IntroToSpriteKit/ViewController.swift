@@ -21,6 +21,7 @@ class ViewController: NSViewController {
         // Grade 12 students:
         // 1. When ready to make screen recording, uncomment line 22 and comment out line 23
         // 2. Choose Product > Clean Build Folder to be sure Xcode picks up the window size change
+        
         //self.skView.frame = NSRect(x: 0, y: 0, width: 1200, height: 900)
         self.skView.frame = NSRect(x: 0, y: 0, width: 800, height: 600)
 
@@ -29,7 +30,7 @@ class ViewController: NSViewController {
         let sceneSize = CGSize(width: 800, height: 600)
         let scene = GameScene(size: sceneSize)
         scene.scaleMode = .aspectFill
-        
+                
         // Show frames per second in the view
         self.skView.showsFPS = true
         

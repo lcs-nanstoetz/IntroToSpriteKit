@@ -133,35 +133,129 @@ self.backgroundColor = NSColor(calibratedHue: 230/360, saturation: 75/100, brigh
         gift13.zPosition = 2
         self.addChild(gift13)
         
-//        let d1R = SKSpriteNode(imageNamed: "Deer1R.png")
-//        d1R.position = CGPoint(x: -50, y: 128 + self.size.height / 2)
-//        d1R.zPosition = 4
-//        self.addChild(d1R)
-//
-//        var RR: [SKTexture] = []
-//
-//        RR.append(SKTexture(imageNamed: "Deer1R"))
-//        RR.append(SKTexture(imageNamed: "Deer2R"))
-//        RR.append(SKTexture(imageNamed: "Deer3R"))
-//
-//        let d1L = SKSpriteNode(imageNamed: "Deer1L.png")
-//        d1L.position = CGPoint(x: -250, y: 200 + self.size.height / 2)
-//        d1L.zPosition = 4
-//        self.addChild(d1R)
-//
-//        var RL: [SKTexture] = []
-//
-//        RL.append(SKTexture(imageNamed: "Deer1R"))
-//        RL.append(SKTexture(imageNamed: "Deer2R"))
-//        RL.append(SKTexture(imageNamed: "Deer3R"))
-//
-//        let RRanimation = SKAction.animate(with: RR, timePerFrame: 0.25, resize: true, restore: true)
-//
-//        // Create action of reindeer running to the left twice as fast
-//        let RLanimation = SKAction.animate(with: RL, timePerFrame: 0.125, resize: true, restore: true)
-    
+        let deer1 = SKSpriteNode(imageNamed: "Deer1R")
+        deer1.position = CGPoint(x: 0, y: 0)
+        self.addChild(deer1)
         
+        var walkingTexture: [SKTexture] = []
         
+        walkingTexture.append(SKTexture(imageNamed: "Deer1R"))
+        walkingTexture.append(SKTexture(imageNamed: "Deer2R"))
+        walkingTexture.append(SKTexture(imageNamed: "Deer3R"))
+
+        let actionWalkingAnimation = SKAction.animate(with: walkingTexture, timePerFrame: 0.05, resize: true, restore: true)
+        
+        let actionMoveForward = SKAction.moveBy(x: 10, y: 0, duration: 0.1)
+        let actionMoveUp = SKAction.moveBy(x: 0, y: 7.5, duration: 0.1)
+        let actionBothWay = SKAction.group([actionMoveForward, actionMoveUp])
+        let actionWalkAndMove = SKAction.group([actionWalkingAnimation, actionBothWay])
+        let actionWalkAndMoveFiveTimes = SKAction.repeat(actionWalkAndMove, count: 100)
+        deer1.run(actionWalkAndMoveFiveTimes)
+
+        let deer2 = SKSpriteNode(imageNamed: "Deer1R")
+        deer2.position = CGPoint(x: 0, y: 50)
+        self.addChild(deer2)
+        deer2.run(actionWalkAndMoveFiveTimes)
+        
+        let deer14 = SKSpriteNode(imageNamed: "Deer1R")
+        deer14.position = CGPoint(x: -50, y: 70)
+        self.addChild(deer14)
+        deer14.run(actionWalkAndMoveFiveTimes)
+        
+        let deer15 = SKSpriteNode(imageNamed: "Deer1R")
+        deer15.position = CGPoint(x: -50, y: 120)
+        self.addChild(deer15)
+        deer15.run(actionWalkAndMoveFiveTimes)
+        
+        let deer16 = SKSpriteNode(imageNamed: "Deer1R")
+        deer16.position = CGPoint(x: -100, y: 40)
+        self.addChild(deer16)
+        deer16.run(actionWalkAndMoveFiveTimes)
+        
+        let deer17 = SKSpriteNode(imageNamed: "Deer1R")
+        deer17.position = CGPoint(x: -100, y: -10)
+        self.addChild(deer17)
+        deer17.run(actionWalkAndMoveFiveTimes)
+        
+        let deer18 = SKSpriteNode(imageNamed: "Deer1R")
+        deer18.position = CGPoint(x: -100, y: -60)
+        self.addChild(deer18)
+        deer18.run(actionWalkAndMoveFiveTimes)
+        
+        let deer19 = SKSpriteNode(imageNamed: "Deer1R")
+        deer19.position = CGPoint(x: -150, y: -50)
+        self.addChild(deer19)
+        deer19.run(actionWalkAndMoveFiveTimes)
+        
+        let deer20 = SKSpriteNode(imageNamed: "Deer1R")
+        deer20.position = CGPoint(x: -150, y: 0)
+        self.addChild(deer20)
+        deer20.run(actionWalkAndMoveFiveTimes)
+        
+        let deer11 = SKSpriteNode(imageNamed: "Deer1R")
+        deer11.position = CGPoint(x: 50, y: -50)
+        self.addChild(deer11)
+        deer11.run(actionWalkAndMoveFiveTimes)
+        
+        let deer12 = SKSpriteNode(imageNamed: "Deer1R")
+        deer12.position = CGPoint(x: -150, y: -50)
+        self.addChild(deer12)
+        deer12.run(actionWalkAndMoveFiveTimes)
+        
+        let deer13 = SKSpriteNode(imageNamed: "Deer1R")
+        deer13.position = CGPoint(x: -100, y: 90)
+        self.addChild(deer13)
+        deer13.run(actionWalkAndMoveFiveTimes)
+        
+        let deer10 = SKSpriteNode(imageNamed: "Deer1R")
+        deer10.position = CGPoint(x: 50, y: 25)
+        self.addChild(deer10)
+        deer10.run(actionWalkAndMoveFiveTimes)
+        
+        let deer9 = SKSpriteNode(imageNamed: "Deer1R")
+        deer9.position = CGPoint(x: 50, y: 75)
+        self.addChild(deer9)
+        deer9.run(actionWalkAndMoveFiveTimes)
+        
+        let deer3 = SKSpriteNode(imageNamed: "Deer1R")
+        deer3.position = CGPoint(x: 0, y: 100)
+        self.addChild(deer3)
+        deer3.run(actionWalkAndMoveFiveTimes)
+
+        let deer4 = SKSpriteNode(imageNamed: "Deer1R")
+        deer4.position = CGPoint(x: -50, y: 20)
+        self.addChild(deer4)
+        deer4.run(actionWalkAndMoveFiveTimes)
+
+        let deer5 = SKSpriteNode(imageNamed: "Deer1R")
+        deer5.position = CGPoint(x: 0, y: -50)
+        self.addChild(deer5)
+        deer5.run(actionWalkAndMoveFiveTimes)
+        
+        let deer6 = SKSpriteNode(imageNamed: "Deer1R")
+        deer6.position = CGPoint(x: 0, y: -100)
+        self.addChild(deer6)
+        deer6.run(actionWalkAndMoveFiveTimes)
+        
+        let deer7 = SKSpriteNode(imageNamed: "Deer1R")
+        deer7.position = CGPoint(x: -50, y: -30)
+        self.addChild(deer7)
+        deer7.run(actionWalkAndMoveFiveTimes)
+        
+        let deer8 = SKSpriteNode(imageNamed: "Deer1R")
+        deer8.position = CGPoint(x: -50, y: -80)
+        self.addChild(deer8)
+        deer8.run(actionWalkAndMoveFiveTimes)
+        
+        let deer21 = SKSpriteNode(imageNamed: "Deer1R")
+        deer21.position = CGPoint(x: -100, y: -100)
+        self.addChild(deer21)
+        deer21.run(actionWalkAndMoveFiveTimes)
+        
+        let deer22 = SKSpriteNode(imageNamed: "Deer1R")
+        deer22.position = CGPoint(x: -150, y: 50)
+        self.addChild(deer22)
+        deer22.run(actionWalkAndMoveFiveTimes)
         
         
         let AddH = SKAction.run {

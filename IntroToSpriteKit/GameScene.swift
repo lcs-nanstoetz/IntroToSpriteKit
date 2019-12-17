@@ -19,6 +19,13 @@ class GameScene: SKScene {
     override func didMove(to view: SKView) {
         
         let actiononeSecondWait = SKAction.wait(forDuration: 1.0)
+        let actionOneSecondWait = SKAction.wait(forDuration: 1)
+        let actionSixSecondWait = SKAction.wait(forDuration: 6)
+
+        // Set sequence to wait then remove all nodes and show end credits
+        let actionShowEndCredits = SKAction.run(removeEverythingThenShowEndCredits)
+        let actionWaitThenShowEndCredits = SKAction.sequence([actionSixSecondWait, actionOneSecondWait, actionOneSecondWait, actionOneSecondWait, actionOneSecondWait, actionOneSecondWait, actionShowEndCredits])
+        self.run(actionWaitThenShowEndCredits)
 
         
         // Set the background colour
@@ -336,5 +343,57 @@ self.backgroundColor = NSColor(calibratedHue: 230/360, saturation: 75/100, brigh
         newLetter.physicsBody?.restitution = 0
         self.addChild(newLetter)
     }
+    // Remove everything and show end credits
+    func removeEverythingThenShowEndCredits() {
+
+        // Remove all existing children nodes
+        self.removeAllChildren()
+
+        // Change background to black
+        self.backgroundColor = .black
+
+        // Add end credits
+        
+        // By...
+        let by = SKLabelNode(fontNamed: "Helvetica Neue")
+        by.fontSize = 48
+        by.fontColor = .white
+        by.text = "Brought to you by Nick Anstoetz"
+        by.zPosition = 3
+        by.position = CGPoint(x: self.size.width / 2, y: self.size.height / 2 + 50)
+        self.addChild(by)
+
+        // And...
+        let and = SKLabelNode(fontNamed: "Helvetica Neue")
+        and.fontSize = 36
+        and.fontColor = .white
+        and.text = "and the Grade 12 Computer Science class"
+        and.zPosition = 3
+        and.position = CGPoint(x: self.size.width / 2, y: self.size.height / 2 - 50)
+        self.addChild(and)
+
+    }
+
+    // Make gravity cause items to fall from the left (gravity pulls to right side of screen)
+    func gravityPullToRight() {
+        let pullToRight = CGVector(dx: 9.8, dy: 0)
+        self.physicsWorld.gravity = pullToRight
+    }
     
+    // Make the letters in the word "Happy" not be affected by gravity
+    func makeHappyNotAffectedByGravity() {
+        
+        // Loop through all child nodes of the scene
+        for node in self.children {
+            
+            // Only look at nodes of type SKLabelNode
+            if let thisNode = node as? SKLabelNode {
+                // Only the letters from the word happy
+                if thisNode.name == "happy letters" {
+                    // Make the physics body not be affected by gravity any more
+                    thisNode.physicsBody?.affectedByGravity = false
+                }
+            }
+        }
+    }
 }
